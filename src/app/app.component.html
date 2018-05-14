@@ -1,20 +1,33 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div style="width:400px; margin:auto">
+  <div *ngIf="!showResult" style="display:flex;flex-direction:column;">
+    <mat-progress-bar mode="determinate" [value]="currentIndex/_questions.length * 100"></mat-progress-bar>
+  <mat-card style="min-height:150px; display:flex;flex-direction:column;margin-top:2px">
+     <h4 style="display:flex; flex: 1 1 3.5em">{{current.order}}. {{current.question}}</h4>  
+    <div style="flex: 0 0 auto;display:flex; flex-direction: row;">
+      <button (click)="onYes()" style="margin-top: 10px; margin-right:80px" mat-raised-button color="warn">Yes</button>
+      <button  (click)="onNo()" style="margin-top: 10px" mat-raised-button color="primary">No</button>
+      </div>
+    </mat-card>
+   
+  
+  </div>
+  <div *ngIf="showResult" style="display:flex;flex-direction:column;margin-bottom:2px">
+    <mat-card style="margin-bottom: 4px">
+      Result - Score for each category: A,B,C,D
+  </mat-card>
+  
+  <mat-card *ngFor='let cat of categories; trackBy: index;' style="position:relative;margin-bottom:2px">
+   <div style="justify-content:center; align-items: center; display: flex; height:100%;width:70px;background-color:yellow; position:absolute; top: 0; left: 0">{{cat.name}} </div>
+   <div style="justify-content:center; align-items: center; display: flex; height:100%;width:70px;position:absolute; top: 0px; left: 70px">{{cat.value}} </div>
+  
+  </mat-card>
+  
+  </div>
+  </div>
+  
+  
+  
+  
+  <!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
